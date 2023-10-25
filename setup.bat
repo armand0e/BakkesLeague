@@ -16,7 +16,7 @@ if %user_input%==B (goto Epic) else (goto Invalid)
 :: Default steam setup starts
 copy "files\bmrl.vbs" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bmrl.vbs"
 :: Check for success
-if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bmrl.vbs" (goto SteamDefault) else (goto SteamCustom)
+if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bmrl.vbs" (goto SteamCustom) else (goto SteamCustom)
 pause
 
 
@@ -32,7 +32,7 @@ echo if not "%ERRORLEVEL%"=="1" goto check_process_running >> files\bmrl.bat
 echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
 echo taskkill /im "BakkesMod.exe" /f >> files\bmrl.bat
 echo pause >> files\bmrl.bat
-:: bmrl.bat is created
+:: default bmrl.bat is created
 copy "files\bmrl.bat" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bmrl.bat"
 pause
 :: Steam launch options default setup script
@@ -58,7 +58,7 @@ echo if not "%ERRORLEVEL%"=="1" goto check_process_running >> files\bmrl.bat
 echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
 echo taskkill /im "BakkesMod.exe" /f >> files\bmrl.bat
 echo pause >> files\bmrl.bat
-:: bmrl.bat is created
+:: custom bmrl.bat is created
 copy "files\bmrl.vbs" "%RLfolder%\Binaries\Win64\bmrl.vbs"
 copy "files\bmrl.bat" "%RLfolder%\Binaries\Win64\bmrl.bat"
 :: Files are copied to the rocketleague\Binaries\Win64 folder
