@@ -11,17 +11,17 @@ INSTALLATION:
 
 *Steam only* (Epic games rocket league not supported)
 
-- Run setup.exe
+    - Run setup.exe
 
-- Open the steam launcher
+    - Open the steam launcher
 
-- Navigate to Rocket League in your library
+    - Navigate to Rocket League in your library
 
-- Click the settings icon and navigate to properties
+    - Click the settings icon and navigate to properties
 
-- Scroll to the bottom and paste the following line into launch parameters:
+    - Scroll to the bottom and paste the following line into launch parameters:
 
-bmrl.vbs %COMMAND%
+    bmrl.vbs %COMMAND%
 
 ____________________________________________________________________________________________
 
