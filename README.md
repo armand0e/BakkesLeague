@@ -29,23 +29,7 @@ FAQ/Troubleshooting:
 
 1."The system cannot find the path specified"
 
-    - Open Steam and navigate to Rocket League
-
-    - Click on the settings icon and select Manage > Browse local files
-
-    - Navigate to Binaries\Win64\ and copy the folder's path to your clipboard
-
-    - Head back to the bakkesleague folder you downloaded and right click on "setup.bat"
-
-    - On windows 11 and up, select "Show more options"
-
-    - Select "Edit"
-
-    - Change the path "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\" to the path you just copied. (IMPORTANT!! Don't forget to leave "bmrl.vbs" and "bmrl.bat" at the end of the new path you pasted in) (they should be on two separate lines, formatted similarly to the original file)
-
-    - Save and close
-
-    - Navigate to the files folder
+    - Navigate to the files folder and select either the steam or epic folder based on your platform
 
     - Right click on "bmrl.bat"
 
@@ -53,7 +37,7 @@ FAQ/Troubleshooting:
 
     - Select "Edit"
 
-    - Change the path "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" to the path you copied earlier. (IMPORTANT!! Don't forget to leave "rocketleague.exe" at the end of the new path you pasted in)
+    - Change the path "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" to the path of your rocketleague.exe file
 
 2.BakkesMod isn't launching
 
