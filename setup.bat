@@ -7,8 +7,8 @@ cls
 :Start
 :: Entrypoint; ask user for platform
 set /p user_input=Do you play rocket league on A.Steam or B.Epic Games (Enter A or B): 
-if %user_input%==A goto Steam
-if %user_input%==B (goto Epic) else (goto Invalid)
+if /i %user_input%==A goto Steam
+if /i %user_input%==B (goto Epic) else (goto Invalid)
 
 
 
