@@ -8,12 +8,12 @@ if /i %user_input%==A goto Steam
 if /i %user_input%==B (goto Epic) else (goto Invalid)
 
 :Steam
-python steam.py
+python files\steam\install.py
 pause
 goto Start
 
 :Epic
-python epic.py
+python files\epic\install.py
 pause
 echo hold on brotha hold on
 
