@@ -26,21 +26,18 @@ if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Wi
 echo @echo off > files\bmrl.bat
 echo start "" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" >> files\bmrl.bat
 echo start "" "C:\Program Files\BakkesMod\BakkesMod.exe" >> files\bmrl.bat
-echo :check_process_running >> files\bmrl.bat
-echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
-echo tasklist /NH /FI "IMAGENAME eq rocketleague.exe" 2>nul | find /I /N "rocketleague.exe">nul >> files\bmrl.bat
-echo if not "%ERRORLEVEL%"=="1" goto check_process_running >> files\bmrl.bat
-echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
-echo taskkill /im "BakkesMod.exe" /f >> files\bmrl.bat
-echo pause >> files\bmrl.bat
+type files\check.txt >> files\bmrl.bat
+
 :: default bmrl.bat is created
 copy "files\bmrl.bat" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bmrl.bat" 
+copy "files\check.bat" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\check.bat"
+echo install complete!
 cls
 :: Steam launch options default setup script
 
 :: Termination script
-set /p user_input=press enter to exit, or press a to rerun setup.bat:
-if /i %user_input%==a (goto Start) else (goto Exit)
+set /p user_input=press enter to rerun setup.bat, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto Start)
 
 
 
@@ -55,24 +52,20 @@ setlocal enabledelayedexpansion
 echo @echo off > files\bmrl.bat
 echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> files\bmrl.bat
 echo start "" "C:\Program Files\BakkesMod\BakkesMod.exe" >> files\bmrl.bat
-echo :check_process_running >> files\bmrl.bat
-echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
-echo tasklist /NH /FI "IMAGENAME eq rocketleague.exe" 2>nul | find /I /N "rocketleague.exe">nul >> files\bmrl.bat
-echo if not "%ERRORLEVEL%"=="1" goto check_process_running >> files\bmrl.bat
-echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
-echo taskkill /im "BakkesMod.exe" /f >> files\bmrl.bat
-echo pause >> files\bmrl.bat
+type files\check.txt >> files\bmrl.bat
+
 :: custom bmrl.bat is created
 copy "files\bmrl.vbs" "%RLfolder%\Binaries\Win64\bmrl.vbs"
-cls
+copy "files\check.bat" "%RLfolder%\Binaries\Win64\check.bat"
 copy "files\bmrl.bat" "%RLfolder%\Binaries\Win64\bmrl.bat"
+
 cls
 echo install complete!
 :: Steam launch options script
 
 :: Termination script
-set /p user_input=press enter to exit, or press a to rerun setup.bat:
-if /i %user_input%==a (goto Start) else (goto Exit)
+set /p user_input=press enter to rerun setup.bat, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto Start)
 
 
 
@@ -89,22 +82,20 @@ if exist "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\bmrl.vbs" (got
 echo @echo off > files\bmrl.bat
 echo start "" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" >> files\bmrl.bat
 echo start "" "C:\Program Files\BakkesMod\BakkesMod.exe" >> files\bmrl.bat
-echo :check_process_running >> files\bmrl.bat
-echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
-echo tasklist /NH /FI "IMAGENAME eq rocketleague.exe" 2>nul | find /I /N "rocketleague.exe">nul >> files\bmrl.bat
-echo if not "%ERRORLEVEL%"=="1" goto check_process_running >> files\bmrl.bat
-echo timeout /t 10 /nobreak >nul 2>&1 >> files\bmrl.bat
-echo taskkill /im "BakkesMod.exe" /f >> files\bmrl.bat
-echo pause >> files\bmrl.bat
+type files\check.txt >> files\bmrl.bat
+
 :: bmrl.bat is copied to rocketleague folder 
 copy "files\bmrl.bat" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\bmrl.bat" 
+copy "files\check.bat" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\check.bat"
+copy "files\check.vbs" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\check.vbs"
+
 cls
 echo install complete!
 :: Epic Games launch options default setup script
 
 :: Termination script
-set /p user_input=press enter to exit, or press a to rerun setup.bat:
-if /i %user_input%==a (goto Start) else (goto Exit)
+set /p user_input=press enter to rerun setup.bat, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto Start)
 
 
 :Invalid
