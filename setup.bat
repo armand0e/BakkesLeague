@@ -87,7 +87,6 @@ type files\check.txt >> files\bmrl.bat
 :: bmrl.bat is copied to rocketleague folder 
 copy "files\bmrl.bat" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\bmrl.bat" 
 copy "files\check.bat" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\check.bat"
-copy "files\check.vbs" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\check.vbs"
 
 cls
 echo install complete!
