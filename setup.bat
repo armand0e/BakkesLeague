@@ -31,8 +31,8 @@ type files\check.txt >> files\bmrl.bat
 :: default bmrl.bat is created
 copy "files\bmrl.bat" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bmrl.bat" 
 copy "files\check.bat" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\check.bat"
-echo install complete!
 cls
+echo install complete!
 :: Steam launch options default setup script
 
 :: Termination script
