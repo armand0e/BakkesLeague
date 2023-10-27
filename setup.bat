@@ -77,12 +77,9 @@ echo @echo off > files\bakkesleague.bat
 echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> files\bakkesleague.bat
 
 :: check for bakkesmod.exe
-copy "files\check.txt" "C:\Program Files\BakkesMod\check.txt"
 cls
-if exist "C:\Program Files\BakkesMod\check.txt" (
+if exist "C:\Program Files\BakkesMod" (
     set "bakkesfolder=C:\Program Files\BakkesMod"
-    del "C:\Program Files\BakkesMod\check.txt"
-    cls
 ) else (
     setlocal
     echo Please select the location of your BakkesMod folder. (the one that has "BakkesMod.exe") &>nul timeout /t 1
@@ -91,7 +88,6 @@ if exist "C:\Program Files\BakkesMod\check.txt" (
     for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "bakkesfolder=%%I"
     setlocal enabledelayedexpansion
     :: BakkesMod folder is selected and stored into %bakkesfolder%
-    cls
     )
 
 :: continue bakkesleague.bat creation
@@ -103,6 +99,7 @@ type files\check.txt >> files\bakkesleague.bat
 :: custom bakkesleague.bat
  is created
 copy "files\bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
+copy "files\check.bat" "%RLfolder%\Binaries\Win64\check.bat"
 copy "files\bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
 
 cls

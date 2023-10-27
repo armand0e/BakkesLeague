@@ -1,5 +1,5 @@
 @echo off 
-start "" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" 
+start "" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" 
 start "" " \BakkesMod.exe" 
 timeout /t 30
 :check_process_running
