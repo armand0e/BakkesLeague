@@ -24,10 +24,11 @@ copy "files\bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
 copy "files\bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
 cls
 echo install complete!
+echo take a look at the readme to complete installation
 pause
 
 :: Termination script
-set /p user_input=press enter to rerun Setup.bat, or press q to quit:
+set /p user_input=press enter to rerun setup.bat, or press q to quit:
 if /i %user_input%==q (goto quit) else (goto Start)
 
 
