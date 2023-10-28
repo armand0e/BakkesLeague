@@ -2,58 +2,177 @@
 icacls * /reset /t /c /q 
 cls
 
+
+
 :Start
 :: Entrypoint; ask user for platform
-set /p user_input=Do you play rocket league on A.Steam or B.Epic Games (Enter A or B):
-if /i %user_input%==A goto continue
-if /i %user_input%==B (goto continue) else (goto Invalid)
-pause
-:: Establish %RLfolder% variable
-:continue
-if /i %user_input%==A (
-    if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" (set default=true) else (set default=false)
-    if %default%==true (
-        set "RLfolder=C:\Program Files (x86)\Steam\steamapps\common\rocketleague"
-        echo this worked *steam default*
-        pause
-    ) 
-    if %default%==false (
-        setlocal
-        echo We couldn't find your rocket league folder. Please select the location of your "rocketleague" folder.
-        echo Please select the location of your "rocketleague" folder. &>nul timeout /t 1
-        set "psCommand="(new-object -COM 'Shell.Application')^
-        .BrowseForFolder(0,'Please select the location of your rocketleague folder.',0,0).self.path""
-        for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "RLfolder=%%I"
-        setlocal enabledelayedexpansion
-        pause
-    )
-    :: rocketleague folder is selected and stored into %RLfolder%
-    :: platform should = A (steam)
-)
+set /p user_input=Do you play rocket league on A.Steam or B.Epic Games (Enter A or B): 
+if /i %user_input%==A goto Steam
+if /i %user_input%==B (goto Epic) else (goto Invalid)
 
-if /i %user_inpute%==B (
-    if exist "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" (set default=true) else (set default=false)
-    if %default%==true (
-        set "RLfolder=C:\Program Files\Epic Games\rocketleague"
-        echo this worked *epic default*
-        pause
-    ) 
-    if %default%==false (
-        setlocal
-        echo We couldn't find your rocket league folder. Please select the location of your "rocketleague" folder.
-        echo Please select the location of your "rocketleague" folder. &>nul timeout /t 1
-        set "psCommand="(new-object -COM 'Shell.Application')^
-        .BrowseForFolder(0,'Please select the location of your rocketleague folder.',0,0).self.path""
-        for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "RLfolder=%%I"
-        setlocal enabledelayedexpansion
-        pause
-    )
-    :: rocketleague folder is selected and stored into %RLfolder%
-    :: platform should = B (epic games)
-)
 
-echo your rocket league folder is %RLfolder%
-pause
+
+:Steam
+:: Default steam setup starts
+copy "files\bakkesleague.vbs" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesleague.vbs" 
+cls
+:: Check for success
+if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesleague.vbs" (goto SteamDefault) else (goto Custom)
+
+
+
+
+:SteamDefault
+echo @echo off > files\bakkesleague.bat
+
+echo start "" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" >> files\bakkesleague.bat
+
+:: check for bakkesmod.exe
+copy "files\check.txt" "C:\Program Files\BakkesMod\check.txt"
+cls
+if exist "C:\Program Files\BakkesMod\check.txt" (
+    set "bakkesfolder=C:\Program Files\BakkesMod"
+    del "C:\Program Files\BakkesMod\check.txt"
+    cls
+) else (
+    setlocal
+    echo Please select the location of your BakkesMod folder. (the one that has "BakkesMod.exe") &>nul timeout /t 1
+    set "psCommand="(new-object -COM 'Shell.Application')^
+    .BrowseForFolder(0,'Please select the location of your "BakkesMod" folder.',0,0).self.path""
+    for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "bakkesfolder=%%I"
+    setlocal enabledelayedexpansion
+    :: BakkesMod folder is selected and stored into %bakkesfolder%
+    cls
+    )
+
+:: continue bakkesleague.bat creation
+echo start "" "%bakkesfolder%\BakkesMod.exe" >> files\bakkesleague.bat
+
+type files\check.txt >> files\bakkesleague.bat
+
+
+:: default bakkesleague.bat
+ is created
+copy "files\bakkesleague.bat" "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesleague.bat" 
+cls
+echo install complete!
+:: Steam launch options default setup script
+
+:: Termination script
+set /p user_input=press enter to rerun setup.bat, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto Start)
+
+
+
+:Custom
+setlocal
+echo Please select the location of your "rocketleague" folder. &>nul timeout /t 1
+set "psCommand="(new-object -COM 'Shell.Application')^
+.BrowseForFolder(0,'Please select the location of your rocketleague folder.',0,0).self.path""
+for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "RLfolder=%%I"
+setlocal enabledelayedexpansion
+:: rocketleague folder is selected and stored into %RLfolder%
+echo @echo off > files\bakkesleague.bat
+
+echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> files\bakkesleague.bat
+
+:: check for bakkesmod.exe
+cls
+if exist "C:\Program Files\BakkesMod" (
+    set "bakkesfolder=C:\Program Files\BakkesMod"
+) else (
+    setlocal
+    echo Please select the location of your BakkesMod folder. (the one that has "BakkesMod.exe") &>nul timeout /t 1
+    set "psCommand="(new-object -COM 'Shell.Application')^
+    .BrowseForFolder(0,'Please select the location of your "BakkesMod" folder.',0,0).self.path""
+    for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "bakkesfolder=%%I"
+    setlocal enabledelayedexpansion
+    :: BakkesMod folder is selected and stored into %bakkesfolder%
+    )
+
+:: continue bakkesleague.bat creation
+echo start "" "%bakkesfolder%\BakkesMod.exe" >> files\bakkesleague.bat
+
+type files\check.txt >> files\bakkesleague.bat
+
+
+:: custom bakkesleague.bat
+ is created
+copy "files\bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
+copy "files\check.bat" "%RLfolder%\Binaries\Win64\check.bat"
+copy "files\bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+
+cls
+echo install complete!
+:: Steam launch options script
+
+:: Termination script
+set /p user_input=press enter to rerun setup.bat, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto Start)
+
+
+
+:Epic
+
+echo READ THIS BEFORE CONTINUING!
+echo Epic Games Launcher does not support command line arguments
+echo *You will have to Launch Rocket League from a shortcut instead of the launcher*
+set /p user_input=press enter to continue, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto EpicContinue)
+
+
+:EpicContinue
+:: Epic Games setup starts
+
+cls
+:: Check for success
+if exist "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\" (goto EpicDefault) else (goto Custom)
+
+
+:EpicDefault
+:: create bakkesleague.bat with default paths
+echo @echo off > files\bakkesleague.bat
+
+echo start "" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" >> files\bakkesleague.bat
+:: check for bakkesmod.exe
+copy "files\check.txt" "C:\Program Files\BakkesMod\check.txt"
+cls
+if exist "C:\Program Files\BakkesMod\check.txt" (
+    set "bakkesfolder=C:\Program Files\BakkesMod"
+    del "C:\Program Files\BakkesMod\check.txt"
+    cls
+) else (
+    setlocal
+    echo Please select the location of your BakkesMod folder. (the one that has "BakkesMod.exe") &>nul timeout /t 1
+    set "psCommand="(new-object -COM 'Shell.Application')^
+    .BrowseForFolder(0,'Please select the location of your "BakkesMod" folder.',0,0).self.path""
+    for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "bakkesfolder=%%I"
+    setlocal enabledelayedexpansion
+    :: BakkesMod folder is selected and stored into %bakkesfolder%
+    cls
+    )
+
+:: continue bakkesleague.bat creation
+echo start "" "%bakkesfolder%\BakkesMod.exe" >> files\bakkesleague.bat
+
+type files\check.txt >> files\bakkesleague.bat
+
+
+:: bakkesleague.bat is copied to rocketleague folder 
+copy "files\bakkesleague.bat" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\bakkesleague.bat" 
+copy "files\bakkesleague.vbs" "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\bakkesleague.vbs"
+cls
+echo install complete!
+:: Epic Games launch options default setup script
+
+:: Termination script
+set /p user_input=press enter to rerun Setup.bat, or press q to quit:
+if /i %user_input%==q (goto Exit) else (goto Start)
+
+
+
+
+
 :Invalid
 echo Error: %user_input% is an invalid, please try again!
 pause
