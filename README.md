@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 INSTALLATION:
 
-*Steam only* (Epic games rocket league not supported)
+*Steam only* (Epic games rocket league not supported yet)
 
     - Run setup.exe
 
@@ -21,32 +21,11 @@ INSTALLATION:
 
     - Scroll to the bottom and paste the following line into launch parameters:
 
-    bmrl.vbs %COMMAND%
+    bakkesleague.vbs %COMMAND%
 
 ____________________________________________________________________________________________
 
 FAQ/Troubleshooting:
 
-1."The system cannot find the path specified"
+    - This program has no flaws, ur trippin bro
 
-    - Navigate to the files folder and select either the steam or epic folder based on your platform
-
-    - Right click on "bmrl.bat"
-
-    - On windows 11 and up, select "Show more options"
-
-    - Select "Edit"
-
-    - Change the path "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" to the path of your rocketleague.exe file
-
-2.BakkesMod isn't launching
-
-    - Navigate to the files folder
-
-    - Right click on "bmrl.bat"
-
-    - On windows 11 and up, select "Show more options"
-
-    - Select "Edit"
-
-    - Change the path "C:\Program Files\BakkesMod\BakkesMod.exe" to the actual path to your local BakkesMod.exe file 
