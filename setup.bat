@@ -3,13 +3,16 @@ icacls * /reset /t /c /q
 cls
 
 :Start
-:: Entrypoint; ask user for platform
+:::::::::::::::::::::::::::::::::::::: Start of script ::::::::::::::::::::::::::::::::::::::
+
+:: asks user if they play on steam or epic games
 set /p user_input=Do you play rocket league on A.Steam or B.Epic Games (Enter A or B): 
 if /i %user_input%==A goto Steam
 if /i %user_input%==B (goto Epic) else (goto Invalid)
-:: steam or epic paths are chosen and %RLfolder% is created
+:: steam or epic is chosen and %RLfolder% is created
 :: each one gets sent to :bakkescheck
 :: %bakkesfolder% is created in :bakkescheck
+
 :bakkescheckreturn
 :: :bakkescheck returns back to this entrypoint with %bakkesfolder% created
 :: %RLfolder% and %bakkesfolder% are used to create bakkesleague.bat
@@ -27,11 +30,11 @@ echo install complete!
 echo take a look at the readme to complete installation
 pause
 
-:: Termination script
+:: termination script
 set /p user_input=press enter to rerun setup.bat, or press q to quit:
 if /i %user_input%==q (goto quit) else (goto Start)
 
-:: End of script
+:: End of script ::
 
 :: EVERYTHING BELOW ARE FUNCTIONS ::
 
@@ -97,5 +100,5 @@ if exist "%bakkesfolder%\BakkesMod.exe" (goto bakkescheckreturn) else (goto bakk
 
 
 :quit
-:: End of script
+:::::::::::::::::::::::::::::::::::::: End of script ::::::::::::::::::::::::::::::::::::::
 ```
