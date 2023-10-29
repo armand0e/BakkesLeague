@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 INSTALLATION:
 
-*Steam only* (Epic games rocket league not supported yet)
+*Steam only* (Epic games rocket league not supported... yet)
 
     - Run setup.exe
 
@@ -17,7 +17,9 @@ INSTALLATION:
 
     - Navigate to Rocket League in your library
 
-    - Click the settings icon and navigate to properties
+    - Click the settings icon
+    
+    - Navigate to properties
 
     - Scroll to the bottom and paste the following line into launch parameters:
 
