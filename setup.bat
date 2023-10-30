@@ -41,7 +41,7 @@ echo CreateObject("Wscript.Shell").Run "bakkesleague.bat", 0, True > bakkesleagu
 copy "bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
 copy "bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
 :: bakkesleague.bat and bakkesleague.vbs are copied into the rocketleague folder and ready to be run
-pause
+::pause
 :: add or remove this pause to verify that the vbs and bat files were accurately created before continuing the script
 del bakkesleague.vbs
 del bakkesleague.bat
