@@ -5,6 +5,10 @@ cls
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: START OF SCRIPT :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: This script creates a batch and vbs file that launches rocket league with bakkesmod
+:: Comments are used below each line or group of lines to explain what the code above is does
+:: The script is divided into 3 main parts: ROCKETLEAGUE FOLDER FUNCTIONS, BAKKESMOD FOLDER FUNCTIONS, and the main script (START OF SCRIPT - END OF SCRIPT)
+:: Functions are called via goto <function name> (e.g. goto Steam)
 
 :Start
 set Error=B
@@ -18,28 +22,45 @@ if /i %user_input%==B (goto Epic) else (goto Invalid)
 :: if user input is not A or B, then user is sent to :Invalid then back to :Start
 :batchwrite
 :: %RLfolder% and %bakkesfolder% are created in ROCKETLEAGUE FOLDER FUNCTIONS and BAKKESMOD FOLDER FUNCTIONS
-echo @echo off > files\bakkesleague.bat
-echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> files\bakkesleague.bat
-echo start "" "%bakkesfolder%\BakkesMod.exe" >> files\bakkesleague.bat
-type files\check.txt >> files\bakkesleague.bat
+echo @echo off > bakkesleague.bat
+echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> bakkesleague.bat
+echo start "" "%bakkesfolder%\BakkesMod.exe" >> bakkesleague.bat
+echo timeout /t 30 >> bakkesleague.bat
+echo ^:check >> bakkesleague.bat
+echo timeout /t 10 /nobreak ^>nul 2^>^&1 >> bakkesleague.bat
+echo tasklist /NH /FI ^"IMAGENAME eq rocketleague.exe^" 2^>nul ^| find /I /N ^"rocketleague.exe^"^>nul >> bakkesleague.bat
+echo if not ^"%%ERRORLEVEL%%^"^=^=^"1^" goto check >> bakkesleague.bat
+echo. >> bakkesleague.bat
+echo timeout /t 10 /nobreak ^>nul 2^>^&1 >> bakkesleague.bat
+echo taskkill /im ^"BakkesMod.exe^" /f >> bakkesleague.bat
+echo. >> bakkesleague.bat
+echo pause >> bakkesleague.bat
 :: a fully functional bakkesleague.bat file is created
-copy "files\bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
-copy "files\bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
-cls
+echo CreateObject("Wscript.Shell").Run "bakkesleague.bat", 0, True > bakkesleague.vbs
+:: bakkesleague.vbs is created
+copy "bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
+copy "bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
 :: bakkesleague.bat and bakkesleague.vbs are copied into the rocketleague folder and ready to be run
+pause
+:: add or remove this pause to verify that the vbs and bat files were accurately created before continuing the script
+del bakkesleague.vbs
+del bakkesleague.bat
+cls
+
+:: create a shortcut to bakkesleague.vbs (epic) or auto update launch options (steam)
 echo Install complete.
 echo Please follow the instructions in README.md to complete installation
 :: installation complete screen
 set /p user_input=pPess enter to rerun setup.bat, or press q to quit:
 if /i %user_input%==q ( goto Quit ) else ( goto Start )
-:: user can choose to either rerun or quit the progra
+:: user can choose to either rerun or quit the program
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: END OF SCRIPT ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Everything below are functions and not part of the main script
 :: Triple lines with capitalized words are used to classify different groups of functions
-:: Empty comment lines are used to separate indivdual functions within a group
+:: New functions are initialized via :<function name> and called via goto <function name> (e.g. :Steam and goto Steam)
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -52,14 +73,10 @@ set platform=Steam
 if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" ( set "RLfolder=C:\Program Files (x86)\Steam\steamapps\common\rocketleague" && goto bakkescheck ) else ( goto Custom )
 :: if the default steam rocketleague directory is found, %RLfolder% is created and user is sent to :bakkescheck, otherwise, the user is routed to :Custom
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 :Epic
 set platform=Epic
 if exist "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" ( set "RLfolder=C:\Program Files\Epic Games\rocketleague" && goto bakkescheck ) else ( goto Custom )
 :: if the default epic rocketleague directory is found, %RLfolder% is created and user is sent to :bakkescheck, otherwise, the user is routed to :Custom
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :Custom
 :: %RLfolder% hasn't been made yet because the rocketleague directory hasn't been found
