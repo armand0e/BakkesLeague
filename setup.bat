@@ -84,7 +84,8 @@ if exist "%RLfolder%\Binaries\Win64\rocketleague.exe" ( goto bakkescheck ) else 
 :: :Steam, :Epic, and :Custom all end up at this point
 
 :bakkescheck
-if exist "C:\Program Files (x86)\BakkesMod\BakkesMod.exe" ( set "bakkesfolder=C:\Program Files (x86)\BakkesMod" && goto batchwrite ) else ( goto bakkescustom )
+if exist "C:\Program Files (x86)\BakkesMod\BakkesMod.exe" ( set "bakkesfolder=C:\Program Files (x86)\BakkesMod" && goto batchwrite )
+if exist "C:\Program Files\BakkesMod\BakkesMod.exe" ( set "bakkesfolder=C:\Program Files\BakkesMod" && goto batchwrite ) else ( goto bakkescustom )
 :: if bakkesmod.exe is found in %RLfolder%\Binaries\Win64, then %bakkesfolder% is created and user is sent to :batchwrite 
 :: if bakkesmod.exe is not found in %RLfolder%\Binaries\Win64, then user is sent to :bakkescustom
 
