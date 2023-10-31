@@ -12,7 +12,7 @@ Steam only *(Epic games not supported ...yet)*
 
     ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/image.png?raw=true)
 
-* Scroll to the bottom and paste the following line into launch parameters:
+* Scroll to the bottom and paste the following line into launch options:
 *     bakkesleague.vbs %COMMAND%
 
     ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/launch.png?raw=true)
