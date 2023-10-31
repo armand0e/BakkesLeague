@@ -3,7 +3,7 @@ Open and close Bakkesmod with RocketLeague!
 
 USAGE:
 
-Automatically makes BakkesMod open and close with the opening and closing of Rocket League 
+Automatically makes BakkesMod open and close with Rocket League 
 
 ___________________________________________________________________________________________
 
