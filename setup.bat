@@ -13,45 +13,55 @@ cls
 :Start
 set Error=B
 :: variables are declared
+
 set /p user_input=Do you play rocket league on A.Steam or B.Epic Games (Enter A or B): 
 :: ask user if they play on steam or epic
+
 if /i %user_input%==A goto Steam
 :: if user input is A, then user is sent to :Steam
+
 if /i %user_input%==B (goto Epic) else (goto Invalid)
 :: if user input is B, then user is sent to :Epic
 :: if user input is not A or B, then user is sent to :Invalid then back to :Start
+
 :batchwrite
 :: %RLfolder% and %bakkesfolder% are created in ROCKETLEAGUE FOLDER FUNCTIONS and BAKKESMOD FOLDER FUNCTIONS
-echo @echo off > bakkesleague.bat
-echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> bakkesleague.bat
-echo start "" "%bakkesfolder%\BakkesMod.exe" >> bakkesleague.bat
-echo timeout /t 30 >> bakkesleague.bat
-echo ^:check >> bakkesleague.bat
-echo timeout /t 10 /nobreak ^>nul 2^>^&1 >> bakkesleague.bat
-echo tasklist /NH /FI ^"IMAGENAME eq rocketleague.exe^" 2^>nul ^| find /I /N ^"rocketleague.exe^"^>nul >> bakkesleague.bat
-echo if not ^"%%ERRORLEVEL%%^"^=^=^"1^" goto check >> bakkesleague.bat
-echo. >> bakkesleague.bat
-echo timeout /t 10 /nobreak ^>nul 2^>^&1 >> bakkesleague.bat
-echo taskkill /im ^"BakkesMod.exe^" /f >> bakkesleague.bat
-echo. >> bakkesleague.bat
-echo pause >> bakkesleague.bat
-:: a fully functional bakkesleague.bat file is created
-echo CreateObject("Wscript.Shell").Run "bakkesleague.bat", 0, True > bakkesleague.vbs
+:: this function is only called if both %RLfolder% and %bakkesfolder% are valid
+echo @echo off > "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo start "" "%RLfolder%\Binaries\Win64\rocketleague.exe" >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo start "" "%bakkesfolder%\BakkesMod.exe" >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo timeout /t 30 >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo ^:check >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo timeout /t 10 /nobreak ^>nul 2^>^&1 >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo tasklist /NH /FI ^"IMAGENAME eq rocketleague.exe^" 2^>nul ^| find /I /N ^"rocketleague.exe^"^>nul >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo if not ^"%%ERRORLEVEL%%^"^=^=^"1^" goto check >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo. >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo timeout /t 10 /nobreak ^>nul 2^>^&1 >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo taskkill /im ^"BakkesMod.exe^" /f >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo. >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+echo pause >> "%RLfolder%\Binaries\Win64\bakkesleague.bat"
+:: bakkesleague.bat file is created
+
+echo CreateObject("Wscript.Shell").Run "bakkesleague.bat", 0, True > "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
 :: bakkesleague.vbs is created
-copy "bakkesleague.vbs" "%RLfolder%\Binaries\Win64\bakkesleague.vbs"
-copy "bakkesleague.bat" "%RLfolder%\Binaries\Win64\bakkesleague.bat"
-:: bakkesleague.bat and bakkesleague.vbs are copied into the rocketleague folder and ready to be run
-::pause
-:: add or remove this pause to verify that the vbs and bat files were accurately created before continuing the script
-del bakkesleague.vbs
-del bakkesleague.bat
+
 cls
+:: bakkesleague.bat and bakkesleague.vbs are copied into the rocketleague folder and ready to be run
+
 
 :: create a shortcut to bakkesleague.vbs (epic) or auto update launch options (steam)
+
+echo @echo off > "dev\files\uninstall_%platform%.bat"
+echo del "%RLfolder%\Binaries\Win64\bakkesleague.vbs" >> "dev\files\uninstall_%platform%.bat"
+echo del "%RLfolder%\Binaries\Win64\bakkesleague.bat" >> "dev\files\uninstall_%platform%.bat"
+echo exit >> "dev\files\uninstall_%platform%.bat"
+:: uninstall_%platform%.bat is created (eg uninstall_steam.bat)
+
 echo Install complete.
 echo Please follow the instructions in README.md to complete installation
 :: installation complete screen
-set /p user_input=pPess enter to rerun setup.bat, or press q to quit:
+
+set /p user_input=Press enter to rerun setup, or press q to quit:
 if /i %user_input%==q ( goto Quit ) else ( goto Start )
 :: user can choose to either rerun or quit the program
 
@@ -69,12 +79,12 @@ if /i %user_input%==q ( goto Quit ) else ( goto Start )
 :: Either a default rocketleague directory is found and stored into %RLfolder%, or the user is asked to select their rocketleague folder
 
 :Steam
-set platform=Steam
+set "platform=steam"
 if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" ( set "RLfolder=C:\Program Files (x86)\Steam\steamapps\common\rocketleague" && goto bakkescheck ) else ( goto Custom )
 :: if the default steam rocketleague directory is found, %RLfolder% is created and user is sent to :bakkescheck, otherwise, the user is routed to :Custom
 
 :Epic
-set platform=Epic
+set "platform=epic"
 if exist "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" ( set "RLfolder=C:\Program Files\Epic Games\rocketleague" && goto bakkescheck ) else ( goto Custom )
 :: if the default epic rocketleague directory is found, %RLfolder% is created and user is sent to :bakkescheck, otherwise, the user is routed to :Custom
 
@@ -138,4 +148,4 @@ pause
 
 :Quit
 exit
-```
+:: exit the program
