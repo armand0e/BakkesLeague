@@ -1,7 +1,6 @@
 # BakkesLeague
-Automatically open and close BakkesMod with Rocket League!
-
-After install, just hit "*play*" from the launcher like you normally do and voila!
+Simaltaneously open and close BakkesMod and Rocket League!
+After setup/install, just hit "*play*" from the launcher as you normally do and let the BakkesLeague script work its magic!
 
 # Install
 Steam only *Epic games not supported ...yet*
