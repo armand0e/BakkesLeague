@@ -1,4 +1,4 @@
-# ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/logo128.png?raw=true) BakkesLeague
+# ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/logo32.png?raw=true) BakkesLeague
 Simaltaneously open and close BakkesMod and Rocket League!
 
 After installing, just hit "*play*" from the launcher as you normally do and let the BakkesLeague script work its magic!
