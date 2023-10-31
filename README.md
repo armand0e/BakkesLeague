@@ -11,19 +11,12 @@ INSTALLATION:
 
 *Steam only* (Epic games rocket league not supported... yet)
 
-    - Run setup.exe
-
-    - Open the steam launcher
-
-    - Navigate to Rocket League in your library
-
-    - Click the settings icon
-    
-    - Navigate to properties
-
-    - Scroll to the bottom and paste the following line into launch parameters:
-
-    bakkesleague.vbs %COMMAND%
+* Download & run the latest setup.exe (https://github.com/armand0e/Bakkesleague/releases)
+* Open up your Steam library and select *Rocket League*
+* Click the settings icon (the little gear icon to the right of the play button)
+* Navigate to properties
+* Scroll to the bottom and paste the following line into launch parameters:
+*     bakkesleague.vbs %COMMAND%
 
 ____________________________________________________________________________________________
 
