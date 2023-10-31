@@ -3,7 +3,7 @@ Simaltaneously open and close BakkesMod and Rocket League!
 
 After installing, just hit "*play*" from the launcher as you normally do and let the BakkesLeague script work its magic!
 
-# ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/logo32.png?raw=true) Install
+# Install
 Steam only *(Epic games not supported ...yet)*
 
 * [Download](https://github.com/armand0e/Bakkesleague/releases/latest) & run the latest version of setup.exe
@@ -17,6 +17,6 @@ Steam only *(Epic games not supported ...yet)*
 
     ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/launch.png?raw=true)
 
-# ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/logo32.png?raw=true) Uninstall
+# Uninstall
 * [Download](https://github.com/armand0e/Bakkesleague/releases/latest) & run the latest version of uninstall.exe
 
