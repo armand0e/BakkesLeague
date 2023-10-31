@@ -14,3 +14,7 @@ Steam only *Epic games not supported ...yet*
 *     bakkesleague.vbs %COMMAND%
 
     ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/launch.png?raw=true)
+
+# Uninstall
+* [Download](https://github.com/armand0e/Bakkesleague/releases/latest) & run the latest version of uninstall.exe
+
