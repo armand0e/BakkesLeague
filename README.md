@@ -1,5 +1,6 @@
 # BakkesLeague
 Simaltaneously open and close BakkesMod and Rocket League!
+
 After setup/install, just hit "*play*" from the launcher as you normally do and let the BakkesLeague script work its magic!
 
 # Install
