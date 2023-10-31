@@ -1,5 +1,5 @@
 # Bakkesleague
-Automatically open and close BakkesMod with Rocket League
+Automatically open and close BakkesMod with Rocket League!
 
 # Install
 Steam only *Epic games not supported ...yet)*
