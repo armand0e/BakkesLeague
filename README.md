@@ -1,7 +1,7 @@
-# Bakkesleague
+# BAKKESLEAGUE
 Automatically open and close BakkesMod with Rocket League!
 
-# Install
+# INSTALL
 Steam only *Epic games not supported ...yet*
 
 * [Download](https://github.com/armand0e/Bakkesleague/releases/download/v1.0.0/setup.exe) & run the latest version of setup.exe
@@ -15,6 +15,6 @@ Steam only *Epic games not supported ...yet*
 
     ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/dev/images/launch.png?raw=true)
 
-# FAQ/Troubleshooting:
+# FAQ
 This program has no flaws, you should have no questions.
 
