@@ -2,6 +2,7 @@
 icacls * /reset /t /c /q 
 cls
 
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: START OF SCRIPT :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -50,11 +51,13 @@ cls
 
 
 :: create a shortcut to bakkesleague.vbs (epic) or auto update launch options (steam)
-
-echo @echo off > "dev\files\uninstall_%platform%.bat"
-echo del "%RLfolder%\Binaries\Win64\bakkesleague.vbs" >> "dev\files\uninstall_%platform%.bat"
-echo del "%RLfolder%\Binaries\Win64\bakkesleague.bat" >> "dev\files\uninstall_%platform%.bat"
-echo exit >> "dev\files\uninstall_%platform%.bat"
+:uninstallwrite
+mkdir "%temp%\bakkesleague"
+cls
+echo @echo off > "%temp%\bakkesleague\uninstall_%platform%.bat"
+echo del "%RLfolder%\Binaries\Win64\bakkesleague.vbs" >> "%temp%\bakkesleague\uninstall_%platform%.bat"
+echo del "%RLfolder%\Binaries\Win64\bakkesleague.bat" >> "%temp%\bakkesleague\uninstall_%platform%.bat"
+echo exit >> "%temp%\bakkesleague\uninstall_%platform%.bat"
 :: uninstall_%platform%.bat is created (eg uninstall_steam.bat)
 
 echo Install complete.
