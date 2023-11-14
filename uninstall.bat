@@ -5,45 +5,45 @@ pause
 :Start
 cls
 set "platform=none"
-if exist "%temp%\bakkesleague\uninstall_epic.bat" ( goto epicexist )  
-if exist "%temp%\bakkesleague\uninstall_steam.bat" ( goto steamexist ) else ( goto Invalid )
+if exist "%localappdata%\bakkesleague\uninstall_epic.bat" ( goto epicexist )  
+if exist "%localappdata%\bakkesleague\uninstall_steam.bat" ( goto steamexist ) else ( goto Invalid )
 
 :reentry
 if %platform%==none ( goto Invalid )
 if %platform%==steam ( 
     cls
     echo Uninstalling BakkesLeague from Steam...
-    start "" "%temp%\bakkesleague\uninstall_steam.bat" 
+    start "" "%localappdata%\bakkesleague\uninstall_steam.bat" 
     timeout /t 1 /nobreak >nul 2>&1
     echo BakkesLeague has been successfully removed
     pause
-    del "%temp%\bakkesleague\uninstall_steam.bat"
+    del "%localappdata%\bakkesleague\uninstall_steam.bat"
     cls
 )
 if %platform%==epic ( 
     cls
-    start "" "%temp%\bakkesleague\uninstall_epic.bat"
+    start "" "%localappdata%\bakkesleague\uninstall_epic.bat"
     timeout /t 1 /nobreak >nul 2>&1 
     echo BakkesLeague has been successfully removed
     pause
-    del "%temp%\bakkesleague\uninstall_epic.bat"
+    del "%localappdata%\bakkesleague\uninstall_epic.bat"
     cls
 )
 if %platform%==both (
     cls
-    start "" "%temp%\bakkesleague\uninstall_epic.bat"
+    start "" "%localappdata%\bakkesleague\uninstall_epic.bat"
     timeout /t 1 
     echo BakkesLeague has been successfully removed from Epic Games
     pause
-    del "%temp%\bakkesleague\uninstall_epic.bat"
+    del "%localappdata%\bakkesleague\uninstall_epic.bat"
     cls
-    start "" "%temp%\bakkesleague\uninstall_steam.bat"
+    start "" "%localappdata%\bakkesleague\uninstall_steam.bat"
     timeout /t 1 
     echo BakkesLeague has been successfully removed from Steam
-    del "%temp%\bakkesleague\uninstall_steam.bat"
+    del "%localappdata%\bakkesleague\uninstall_steam.bat"
     cls
 )
-rmdir "%temp%\bakkesleague"
+rmdir "%localappdata%\bakkesleague"
 cls
 echo BakkesLeague has been successfully removed!
 echo Have a great day!
@@ -52,10 +52,10 @@ goto quit
 
 
 :steamexist
-if exist "%temp%\bakkesleague\uninstall_epic.bat" ( goto Choose ) else ( set "platform=steam" && goto reentry )
+if exist "%localappdata%\bakkesleague\uninstall_epic.bat" ( goto Choose ) else ( set "platform=steam" && goto reentry )
 
 :epicexist
-if exist "%temp%\bakkesleague\uninstall_steam.bat" ( goto Choose ) else ( set "platform=epic" && goto reentry )
+if exist "%localappdata%\bakkesleague\uninstall_steam.bat" ( goto Choose ) else ( set "platform=epic" && goto reentry )
 
 :Choose
 echo Whoa! Looks like you have BakkesLeague installed on both Steam and Epic.

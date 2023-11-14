@@ -52,12 +52,12 @@ cls
 
 :: create a shortcut to bakkesleague.vbs (epic) or auto update launch options (steam)
 :uninstallwrite
-mkdir "%temp%\bakkesleague"
+mkdir "%localappdata%\bakkesleague"
 cls
-echo @echo off > "%temp%\bakkesleague\uninstall_%platform%.bat"
-echo del "%RLfolder%\Binaries\Win64\bakkesleague.vbs" >> "%temp%\bakkesleague\uninstall_%platform%.bat"
-echo del "%RLfolder%\Binaries\Win64\bakkesleague.bat" >> "%temp%\bakkesleague\uninstall_%platform%.bat"
-echo exit >> "%temp%\bakkesleague\uninstall_%platform%.bat"
+echo @echo off > "%localappdata%\bakkesleague\uninstall_%platform%.bat"
+echo del "%RLfolder%\Binaries\Win64\bakkesleague.vbs" >> "%localappdata%\bakkesleague\uninstall_%platform%.bat"
+echo del "%RLfolder%\Binaries\Win64\bakkesleague.bat" >> "%localappdata%\bakkesleague\uninstall_%platform%.bat"
+echo exit >> "%localappdata%\bakkesleague\uninstall_%platform%.bat"
 :: uninstall_%platform%.bat is created (eg uninstall_steam.bat)
 
 echo Install complete.
