@@ -2,14 +2,14 @@
 
 
 # ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/logo32.png?raw=true) BakkesLeague
-Simaltaneously open and close BakkesMod and Rocket League!
+With BakkesLeague you never need to open or close BakkesMod, it will automatically launch and exit BakkesMod with Rocket League!
 
-After installing, just hit "*play*" from the launcher as you normally do and let the BakkesLeague script work its magic!
+Just hit "*play*" from the launcher as you normally do, and let the BakkesLeague script work its magic!
 
 # Install
 Steam only *(Epic games not supported ...yet)*
 
-* [Download](https://github.com/armand0e/Bakkesleague/releases/latest) & run the latest version of setup.exe
+* [Download](https://github.com/armand0e/Bakkesleague/releases/latest) & run the latest version of setup.exe to install BakkesLeague for Steam
 * Open up your Steam library and select *Rocket League*
 * Click the settings icon and navigate to properties
 
@@ -19,6 +19,15 @@ Steam only *(Epic games not supported ...yet)*
 *     bakkesleague.vbs %COMMAND%
 
     ![alt text](https://github.com/armand0e/Bakkesleague/blob/main/images/launch.png?raw=true)
+
+* Launch BakkesMod and navigate to your BakkesMod settings
+* Enable *Minimize on start*
+* Disable *Run on startup*
+
+# Install Notes
+Please only select the Steam install option when running setup.exe *Epic games launcher does not support running scripts from launch options*
+
+
 
 # Uninstall
 * [Download](https://github.com/armand0e/Bakkesleague/releases/latest) & run the latest version of uninstall.exe
